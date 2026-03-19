@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I am UNIVERSE</title> <!-- 核心修改：仅显示"我是宇宙"的英文 -->
+    <title>I AM UNIVERSE</title>
+    <!-- 宇宙银河系图标（在线链接，不卡顿） -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/32/148/148840.png">
+    
     <style>
-        /* 全局重置 & 原站核心样式复刻 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         body {
             background-color: #fff;
             color: #000;
             overflow-x: hidden;
-            position: relative;
             line-height: 1.5;
         }
 
-        /* 背景浮动文字（替换为AI常用代码，复刻原站上升动效） */
         .floating-text {
             position: fixed;
             top: 0;
@@ -42,23 +42,12 @@
         }
 
         @keyframes floatUp {
-            0% {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
-            5% {
-                opacity: 1;
-            }
-            95% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh); opacity: 0; }
+            5% { opacity: 1; }
+            95% { opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
         }
 
-        /* 网格背景（复刻原站浅网格） */
         .grid-bg {
             position: fixed;
             top: 0;
@@ -73,7 +62,6 @@
             opacity: 0.5;
         }
 
-        /* 导航栏（复刻原站布局+样式，去掉BETA） */
         nav {
             display: flex;
             justify-content: space-between;
@@ -93,11 +81,10 @@
             font-size: 18px;
         }
 
-        /* 定制W图标（替换原站龙虾） */
         .w-icon {
             font-size: 24px;
             font-weight: 900;
-            color: #ff6700; /* 原站龙虾橙，保留这个色系 */
+            color: #ff6700;
         }
 
         .nav-right {
@@ -123,21 +110,16 @@
             gap: 16px;
         }
 
-        .social-icons a {
-            font-size: 16px;
-        }
-
-        /* 核心内容区（整体居中，解决打字机行消失问题） */
         .hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center; /* 整体居中 */
+            align-items: center;
             padding: 0 20px;
             max-width: 1200px;
             margin: 0 auto;
-            text-align: center; /* 文本居中 */
+            text-align: center;
         }
 
         .brand-wrapper {
@@ -159,7 +141,6 @@
             color: #ff6700;
         }
 
-        /* 第一行固定文本 - 居中 */
         .typewriter-line1 {
             font-size: clamp(2rem, 8vw, 5rem);
             font-weight: 900;
@@ -167,10 +148,8 @@
             margin-bottom: 16px;
             color: #000;
             white-space: nowrap;
-            display: inline-block; /* 确保居中 */
         }
 
-        /* 第二行打字机效果 - 居中+固定行高（解决消失问题） + 王宇宙字符间距 */
         .typewriter-line2 {
             font-size: clamp(2rem, 8vw, 5rem);
             font-weight: 900;
@@ -181,17 +160,14 @@
             border-right: 4px solid #ff6700;
             animation: blink-caret 0.75s step-end infinite;
             white-space: nowrap;
-            display: inline-block; /* 固定行存在 */
-            min-height: 1.2em; /* 核心：删除完也保留行高，不消失 */
-            min-width: 20px; /* 保留光标位置，不塌陷 */
+            min-height: 1.2em;
+            min-width: 20px;
         }
 
-        /* 王宇宙专属字符间距样式 */
         .typewriter-line2.chinese-spacing {
-            letter-spacing: 0.5em; /* 可调整间隙大小 */
+            letter-spacing: 0.5em;
         }
 
-        /* 恢复英文默认间距 */
         .typewriter-line2.english-spacing {
             letter-spacing: normal;
         }
@@ -201,7 +177,6 @@
             50% { border-color: #ff6700; }
         }
 
-        /* 介绍文案精简 - 居中 */
         .subtitle {
             font-size: clamp(1rem, 3vw, 1.25rem);
             opacity: 0.7;
@@ -209,7 +184,6 @@
             max-width: 600px;
         }
 
-        /* 标语样式 - 居中 */
         .slogan {
             font-size: clamp(1rem, 3vw, 1.25rem);
             color: #ff6700;
@@ -218,7 +192,6 @@
             margin-bottom: 48px;
         }
 
-        /* 自定义跳转按钮（替换下载按钮） */
         .btn {
             padding: 12px 24px;
             border-radius: 8px;
@@ -250,7 +223,6 @@
             background-color: #e0e0e0;
         }
 
-        /* 响应式适配（复刻原站移动端表现） */
         @media (max-width: 768px) {
             nav {
                 padding: 16px 20px;
@@ -261,24 +233,10 @@
             .social-icons {
                 display: none;
             }
-            .brand-wrapper {
-                margin-bottom: 24px;
-            }
-            .brand-icon {
-                font-size: 36px;
-            }
-            .brand-name {
-                font-size: 36px;
-            }
-            .typewriter-line1, .typewriter-line2 {
-                font-size: clamp(1.8rem, 7vw, 3.5rem);
-            }
-            /* 移动端调整中文字符间距 */
             .typewriter-line2.chinese-spacing {
                 letter-spacing: 0.3em;
             }
             .btn-group {
-                display: flex;
                 flex-direction: column;
                 gap: 16px;
             }
@@ -287,17 +245,12 @@
             }
         }
     </style>
-    <!-- 图标库（保留原站社交图标样式） -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- 网格背景（复刻原站） -->
     <div class="grid-bg"></div>
-    
-    <!-- 背景浮动AI代码（替换原站命令行，复刻上升动效） -->
     <div class="floating-text" id="floatingText"></div>
 
-    <!-- 导航栏（去掉BETA标识） -->
     <nav>
         <div class="nav-left">
             <span class="w-icon">W</span>
@@ -316,7 +269,6 @@
         </div>
     </nav>
 
-    <!-- 核心内容区（整体居中+打字机行不消失） -->
     <section class="hero">
         <div class="brand-wrapper">
             <span class="brand-icon">W</span>
@@ -335,70 +287,35 @@
     </section>
 
     <script>
-        // 1. 生成背景浮动AI代码（复刻原站上升动效）
         const aiCodes = [
-            "import torch",
-            "import tensorflow as tf",
-            "from transformers import AutoModel",
-            "model = AutoModel.from_pretrained('llama-3')",
-            "response = model.generate(prompt)",
-            "embedding = model.encode(text)",
-            "torch.cuda.is_available()",
-            "model.train()",
-            "optimizer = torch.optim.Adam(model.parameters())",
-            "loss.backward()",
-            "torch.save(model, 'universe_ai.pth')",
-            "from langchain import OpenAI",
-            "from langchain.chains import LLMChain",
-            "import numpy as np",
-            "from PIL import Image",
-            "import cv2",
-            "tokenizer = AutoTokenizer.from_pretrained('gpt-4')",
-            "batch_size = 32",
-            "epochs = 10",
-            "lr = 1e-4",
-            "device = 'cuda' if torch.cuda.is_available() else 'cpu'"
+            "import torch","import tensorflow as tf","from transformers import AutoModel",
+            "model = AutoModel.from_pretrained('llama-3')","response = model.generate(prompt)"
         ];
 
         const floatingText = document.getElementById('floatingText');
-        const screenWidth = window.innerWidth;
-        const screenHeight = window.innerHeight;
-        const lineCount = 50; // 复刻原站密度
+        const lineCount = 20;
 
-        // 生成浮动代码行
         for (let i = 0; i < lineCount; i++) {
             const line = document.createElement('div');
             line.className = 'floating-line';
             line.textContent = aiCodes[Math.floor(Math.random() * aiCodes.length)];
-            
-            // 随机位置和动画时长（复刻原站不规则浮动）
-            const x = Math.random() * screenWidth;
-            const duration = 20 + Math.random() * 30; // 20-50秒
-            const delay = Math.random() * 20; // 0-20秒延迟
-            
+            const x = Math.random() * window.innerWidth;
+            const duration = 20 + Math.random() * 30;
+            const delay = Math.random() * 20;
             line.style.left = `${x}px`;
             line.style.animationDuration = `${duration}s`;
             line.style.animationDelay = `${delay}s`;
-            
             floatingText.appendChild(line);
         }
 
-        // 2. 打字机循环动画（删除完保留行，不消失 + 王宇宙字符间距）
         const typewriter = document.getElementById('typewriter');
-        const textSequence = [
-            "王宇宙",
-            "UNIVERSE WANG"
-        ];
+        const textSequence = ["王宇宙","UNIVERSE WANG"];
         let sequenceIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
-        let typingSpeed = 150;
-        let deletingSpeed = 80;
 
         function typeWriterEffect() {
             const currentText = textSequence[sequenceIndex];
-            
-            // 根据当前文本切换字符间距样式
             if (currentText === "王宇宙") {
                 typewriter.classList.add('chinese-spacing');
                 typewriter.classList.remove('english-spacing');
@@ -408,50 +325,25 @@
             }
 
             if (!isDeleting && charIndex < currentText.length) {
-                // 打字阶段
                 typewriter.textContent += currentText.charAt(charIndex);
                 charIndex++;
-                setTimeout(typeWriterEffect, typingSpeed);
+                setTimeout(typeWriterEffect, 150);
             } else if (isDeleting && charIndex > 0) {
-                // 删除阶段（删到0也保留行）
                 typewriter.textContent = currentText.substring(0, charIndex - 1);
                 charIndex--;
-                setTimeout(typeWriterEffect, deletingSpeed);
+                setTimeout(typeWriterEffect, 80);
             } else {
-                // 切换状态，删完后不清空，保留行位置
                 isDeleting = !isDeleting;
-                
                 if (!isDeleting) {
-                    // 切换到下一个文本，停顿后开始打字
                     sequenceIndex = (sequenceIndex + 1) % textSequence.length;
                     setTimeout(typeWriterEffect, 1000);
                 } else {
-                    // 开始删除前停顿
                     setTimeout(typeWriterEffect, 1500);
                 }
             }
         }
 
-        // 启动打字机
         setTimeout(typeWriterEffect, 1000);
-
-        // 3. 窗口大小适配（复刻原站响应式）
-        window.addEventListener('resize', () => {
-            floatingText.innerHTML = '';
-            const newWidth = window.innerWidth;
-            for (let i = 0; i < lineCount; i++) {
-                const line = document.createElement('div');
-                line.className = 'floating-line';
-                line.textContent = aiCodes[Math.floor(Math.random() * aiCodes.length)];
-                const x = Math.random() * newWidth;
-                const duration = 20 + Math.random() * 30;
-                const delay = Math.random() * 20;
-                line.style.left = `${x}px`;
-                line.style.animationDuration = `${duration}s`;
-                line.style.animationDelay = `${delay}s`;
-                floatingText.appendChild(line);
-            }
-        });
     </script>
 </body>
 </html>
