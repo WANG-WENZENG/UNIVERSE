@@ -1,141 +1,133 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WANG UNIVERSE | AI 前沿探索</title>
-    <!-- 苹果风格字体 -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap">
-    <!-- 图标库 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>UNIVERSE | AI Developer</title>
     <style>
-        /* 全局重置 & 基础样式 */
+        /* 全局重置 & 原站核心样式复刻 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            cursor: none; /* 隐藏默认鼠标 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background: #000000;
-            color: #f5f5f7;
+            background-color: #fff;
+            color: #000;
             overflow-x: hidden;
             position: relative;
+            line-height: 1.5;
         }
 
-        /* 自定义鼠标特效 */
-        .custom-cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(0, 113, 227, 0.6);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
-            mix-blend-mode: screen;
-        }
-        .custom-cursor.hover {
-            transform: scale(1.5);
-            width: 30px;
-            height: 30px;
-            background: rgba(94, 92, 230, 0.8);
-        }
-
-        /* 粒子背景（增强版） */
-        #particles-js {
+        /* 背景浮动文字（替换为AI常用代码，复刻原站上升动效） */
+        .floating-text {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0;
-            opacity: 0.8;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.08;
+            font-family: monospace;
+            font-size: 12px;
         }
 
-        /* 网格背景（增强科技感） */
+        .floating-line {
+            position: absolute;
+            white-space: nowrap;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+            5% {
+                opacity: 1;
+            }
+            95% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
+
+        /* 网格背景（复刻原站浅网格） */
         .grid-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0;
             background-image: 
-                linear-gradient(rgba(0, 113, 227, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 113, 227, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-        }
-        @keyframes gridMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 50px 50px; }
+                linear-gradient(#eee 1px, transparent 1px),
+                linear-gradient(90deg, #eee 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -2;
+            opacity: 0.5;
         }
 
-        /* 导航栏（苹果风格毛玻璃+增强） */
+        /* 导航栏（复刻原站布局+样式，去掉BETA） */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 16px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-bottom: 1px solid rgba(0, 113, 227, 0.2);
+            padding: 24px 40px;
+            position: fixed;
+            top: 0;
+            width: 100%;
             z-index: 100;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 30px rgba(0, 113, 227, 0.1);
         }
 
-        .logo {
-            font-size: 22px;
-            font-weight: 700;
-            background: linear-gradient(90deg, #0071e3, #5e5ce6, #a742ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
+        .nav-left {
             display: flex;
-            gap: 32px;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 18px;
         }
 
-        .nav-links a {
-            color: #f5f5f7;
-            text-decoration: none;
+        /* 定制W图标（替换原站龙虾） */
+        .w-icon {
+            font-size: 24px;
+            font-weight: 900;
+            color: #ff6700; /* 原站龙虾橙，保留这个色系 */
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 32px;
             font-size: 14px;
-            font-weight: 400;
-            opacity: 0.8;
-            transition: all 0.2s ease;
-            position: relative;
         }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: linear-gradient(90deg, #0071e3, #5e5ce6);
-            transition: width 0.3s ease;
+
+        .nav-right a {
+            color: #000;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
         }
-        .nav-links a:hover {
+
+        .nav-right a:hover {
             opacity: 1;
         }
-        .nav-links a:hover::after {
-            width: 100%;
+
+        .social-icons {
+            display: flex;
+            gap: 16px;
         }
 
-        /* 英雄区（个人化+动态文字） */
+        .social-icons a {
+            font-size: 16px;
+        }
+
+        /* 核心内容区（复刻原站居中布局+定制打字机动效） */
         .hero {
             height: 100vh;
             display: flex;
@@ -143,511 +135,296 @@
             justify-content: center;
             align-items: center;
             padding: 0 20px;
-            position: relative;
-            z-index: 1;
             text-align: center;
         }
 
-        .name-main {
-            font-size: clamp(4rem, 15vw, 8rem);
-            font-weight: 700;
-            margin-bottom: 16px;
-            background: linear-gradient(120deg, #ffffff, #a1a1aa, #0071e3);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1.1;
-            letter-spacing: 2px;
-            animation: textGlow 3s ease-in-out infinite alternate;
-        }
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-            100% { text-shadow: 0 0 30px rgba(0, 113, 227, 0.8), 0 0 60px rgba(94, 92, 230, 0.5); }
-        }
-
-        .name-pinyin {
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            font-weight: 400;
-            color: #a1a1aa;
-            margin-bottom: 12px;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-        }
-
-        .name-english {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            font-weight: 300;
-            color: #86868b;
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             margin-bottom: 24px;
-            letter-spacing: 4px;
         }
 
-        .slogan {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            font-weight: 500;
-            color: #0071e3;
-            margin-bottom: 60px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            animation: sloganPulse 4s ease-in-out infinite;
-        }
-        @keyframes sloganPulse {
-            0%, 100% { opacity: 0.8; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.05); }
+        .brand-icon {
+            font-size: 48px;
+            font-weight: 900;
+            color: #ff6700;
         }
 
-        /* 苹果风格按钮（增强科技感） */
+        .brand-name {
+            font-size: 48px;
+            font-weight: 600;
+            color: #ff6700;
+        }
+
+        /* 核心打字机文本（完全复刻原站：固定文本+局部动效） */
+        .typewriter-container {
+            font-size: clamp(2rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            position: relative; /* 关键：相对定位承载固定宽度 */
+            display: inline-block; /* 关键：保持行内块，不占满整行 */
+        }
+
+        /* 固定前缀 - 完全不动，和原站"也能玩转"一致 */
+        .typewriter-prefix {
+            color: #000;
+            display: inline-block; /* 关键：块级化，宽度固定 */
+            width: auto; /* 仅占自身文字宽度 */
+            white-space: nowrap; /* 不换行 */
+        }
+
+        /* 动态区域 - 仅这个区域有打字机效果，宽度固定不影响前缀 */
+        .typewriter-text {
+            color: #ff6700; /* 原站橙色高亮，和品牌色一致 */
+            display: inline-block; /* 关键：独立块，不影响前缀 */
+            overflow: hidden; /* 隐藏溢出文字 */
+            border-right: 4px solid #ff6700; /* 光标颜色匹配品牌色 */
+            animation: blink-caret 0.75s step-end infinite;
+            white-space: nowrap; /* 不换行 */
+            width: auto; /* 仅随内容变化，但不影响前缀位置 */
+            vertical-align: bottom; /* 对齐基线，防止跳动 */
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #ff6700; }
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            opacity: 0.7;
+            max-width: 600px;
+            margin-bottom: 48px;
+        }
+
+        /* 自定义跳转按钮（替换下载按钮） */
         .btn {
-            padding: 14px 32px;
-            border-radius: 9999px;
+            padding: 12px 24px;
+            border-radius: 8px;
             font-size: 16px;
-            font-weight: 500;
-            cursor: none;
-            transition: all 0.3s ease;
-            border: none;
+            font-weight: 600;
             text-decoration: none;
+            transition: all 0.2s ease;
             display: inline-block;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        .btn:hover::before {
-            left: 100%;
+            margin: 0 8px;
         }
 
         .btn-primary {
-            background: linear-gradient(90deg, #0071e3, #5e5ce6);
-            color: #ffffff;
-            box-shadow: 0 0 20px rgba(0, 113, 227, 0.3);
+            background-color: #000;
+            color: #fff;
         }
+
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 113, 227, 0.5);
+            background-color: #333;
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: #ffffff;
-            margin-left: 16px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 113, 227, 0.3);
+            background-color: #eee;
+            color: #000;
+            opacity: 0.8;
         }
+
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(94, 92, 230, 0.2);
-        }
-
-        /* AI 前沿板块 */
-        .ai-features {
-            padding: 120px 40px;
-            background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-title {
-            font-size: clamp(1.8rem, 5vw, 3rem);
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 80px;
-            color: #ffffff;
-            background: linear-gradient(90deg, #0071e3, #5e5ce6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid rgba(0, 113, 227, 0.2);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 113, 227, 0.05), rgba(94, 92, 230, 0.05));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 113, 227, 0.2);
-            border-color: rgba(0, 113, 227, 0.4);
-        }
-        .feature-card:hover::before {
             opacity: 1;
+            background-color: #e0e0e0;
         }
 
-        .feature-icon {
-            font-size: 40px;
-            background: linear-gradient(90deg, #0071e3, #5e5ce6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease;
-        }
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .feature-card h3 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: #ffffff;
-        }
-
-        .feature-card p {
-            font-size: 16px;
-            color: #a1a1aa;
-            line-height: 1.6;
-        }
-
-        /* 页脚 */
-        footer {
-            padding: 40px;
-            text-align: center;
-            background: #000000;
-            border-top: 1px solid rgba(0, 113, 227, 0.2);
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-text {
-            font-size: 14px;
-            color: #86868b;
-            margin-bottom: 16px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-bottom: 24px;
-        }
-
-        .social-links a {
-            color: #86868b;
-            font-size: 20px;
-            transition: all 0.3s ease;
-        }
-        .social-links a:hover {
-            color: #0071e3;
-            transform: translateY(-3px) scale(1.1);
-            text-shadow: 0 0 10px rgba(0, 113, 227, 0.5);
-        }
-
-        /* 响应式适配 */
+        /* 响应式适配（复刻原站移动端表现） */
         @media (max-width: 768px) {
             nav {
                 padding: 16px 20px;
             }
-            .nav-links {
-                gap: 20px;
+            .nav-right {
+                gap: 16px;
             }
-            .hero {
-                padding: 0 20px;
+            .social-icons {
+                display: none;
+            }
+            .brand-wrapper {
+                margin-bottom: 16px;
+            }
+            .brand-icon {
+                font-size: 36px;
+            }
+            .brand-name {
+                font-size: 36px;
             }
             .btn-group {
                 display: flex;
                 flex-direction: column;
                 gap: 16px;
             }
-            .btn-secondary {
-                margin-left: 0;
-            }
-            .ai-features {
-                padding: 80px 20px;
-            }
-            .features-grid {
-                gap: 24px;
-            }
-            .name-pinyin {
-                letter-spacing: 4px;
-            }
-            /* 移动端隐藏自定义鼠标 */
-            .custom-cursor {
-                display: none;
-            }
-            * {
-                cursor: default;
-            }
             .btn {
-                cursor: pointer;
+                margin: 0;
+            }
+            /* 移动端依然保持前缀固定 */
+            .typewriter-container {
+                display: inline-block;
+                text-align: left;
             }
         }
     </style>
+    <!-- 图标库（保留原站社交图标样式） -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- 网格背景 -->
+    <!-- 网格背景（复刻原站） -->
     <div class="grid-bg"></div>
     
-    <!-- 粒子背景 -->
-    <div id="particles-js"></div>
+    <!-- 背景浮动AI代码（替换原站命令行，复刻上升动效） -->
+    <div class="floating-text" id="floatingText"></div>
 
-    <!-- 自定义鼠标 -->
-    <div class="custom-cursor"></div>
-
-    <!-- 导航栏 -->
+    <!-- 导航栏（去掉BETA标识） -->
     <nav>
-        <div class="logo">WANG UNIVERSE</div>
-        <div class="nav-links">
-            <a href="#home" class="nav-link">首页</a>
-            <a href="#ai-features" class="nav-link">AI 前沿</a>
-            <a href="https://github.com" target="_blank" class="nav-link">项目</a>
-            <a href="mailto:your@email.com" class="nav-link">联系</a>
+        <div class="nav-left">
+            <span class="w-icon">W</span>
+            <span>UNIVERSE</span>
+        </div>
+        <div class="nav-right">
+            <a href="#features">Features</a>
+            <a href="#预约">Pre-order</a>
+            <a href="#faq">FAQ</a>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-weixin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
     </nav>
 
-    <!-- 英雄区（个人化内容） -->
-    <section class="hero" id="home">
-        <h1 class="name-main">王 宇宙</h1>
-        <div class="name-pinyin">wang yu zhou</div>
-        <div class="name-english">WANG UNIVERSE</div>
-        <div class="slogan">NOBODY DOES THIS LIKE ME</div>
+    <!-- 核心内容区（完全复刻原站：固定前缀+局部打字机） -->
+    <section class="hero">
+        <div class="brand-wrapper">
+            <span class="brand-icon">W</span>
+            <span class="brand-name">UNIVERSE</span>
+        </div>
+        <div class="typewriter-container">
+            <span class="typewriter-prefix">Welcome, I am </span>
+            <span class="typewriter-text" id="typewriter"></span>
+        </div>
+        <p class="subtitle">
+            UNIVERSE is your personal AI development assistant, making complex AI engineering simple and intuitive.
+        </p>
         <div class="btn-group">
-            <a href="#ai-features" class="btn btn-primary">AI 探索</a>
-            <a href="https://github.com" target="_blank" class="btn btn-secondary">查看项目</a>
+            <!-- 自定义跳转链接按钮，替换下载按钮 -->
+            <a href="https://github.com" target="_blank" class="btn btn-primary">View My Projects</a>
+            <a href="mailto:your@email.com" class="btn btn-secondary">Contact Me</a>
         </div>
     </section>
 
-    <!-- AI 前沿板块 -->
-    <section class="ai-features" id="ai-features">
-        <h2 class="section-title">AI 前沿领域</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <h3>大语言模型</h3>
-                <p>专注于大语言模型的微调与应用开发，探索LLM在垂直领域的落地场景，优化推理效率与交互体验。</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <h3>多模态AI</h3>
-                <p>研究文本、图像、音频、视频的跨模态理解与生成，打造端到端的多模态交互系统。</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-microchip"></i>
-                </div>
-                <h3>AI 部署优化</h3>
-                <p>针对边缘设备与云端环境的AI模型轻量化、量化部署，提升推理速度与资源利用率。</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h3>生成式AI</h3>
-                <p>探索AIGC在内容创作、设计、数据分析等领域的创新应用，构建智能化创作工具链。</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>AI 安全</h3>
-                <p>研究大模型的对齐、安全防护与内容审核技术，保障AI应用的合规性与可靠性。</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-lightbulb"></i>
-                </div>
-                <h3>AI 创新应用</h3>
-                <p>将前沿AI技术落地到实际场景，包括智能助手、自动化工具、个性化推荐等解决方案。</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer>
-        <div class="social-links">
-            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://zhihu.com" target="_blank"><i class="fab fa-zhihu"></i></a>
-        </div>
-        <p class="footer-text">© 2026 WANG UNIVERSE. All Rights Reserved.</p>
-        <p class="footer-text">NOBODY DOES THIS LIKE ME | AI & TECHNOLOGY</p>
-    </footer>
-
-    <!-- 粒子背景脚本 -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // 初始化粒子背景（增强科技感配置）
-        particlesJS('particles-js', {
-            "particles": {
-                "number": {
-                    "value": 120,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": ["#0071e3", "#5e5ce6", "#a742ff", "#ffffff"]
-                },
-                "shape": {
-                    "type": ["circle", "triangle", "edge"]
-                },
-                "opacity": {
-                    "value": 0.2,
-                    "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 0.5,
-                        "opacity_min": 0.05,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 4,
-                    "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 1,
-                        "size_min": 1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#0071e3",
-                    "opacity": 0.2,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 1.5,
-                    "direction": "none",
-                    "random": true,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": true,
-                        "rotateX": 600,
-                        "rotateY": 1200
-                    }
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": ["grab", "bubble"]
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": ["push", "repulse"]
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 180,
-                        "line_linked": {
-                            "opacity": 0.5
-                        }
-                    },
-                    "bubble": {
-                        "distance": 200,
-                        "size": 8,
-                        "duration": 2,
-                        "opacity": 0.8
-                    },
-                    "push": {
-                        "particles_nb": 8
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.5
-                    }
-                }
-            },
-            "retina_detect": true
-        });
+        // 1. 生成背景浮动AI代码（复刻原站上升动效）
+        const aiCodes = [
+            "import torch",
+            "import tensorflow as tf",
+            "from transformers import AutoModel",
+            "model = AutoModel.from_pretrained('llama-3')",
+            "response = model.generate(prompt)",
+            "embedding = model.encode(text)",
+            "torch.cuda.is_available()",
+            "model.train()",
+            "optimizer = torch.optim.Adam(model.parameters())",
+            "loss.backward()",
+            "torch.save(model, 'universe_ai.pth')",
+            "from langchain import OpenAI",
+            "from langchain.chains import LLMChain",
+            "import numpy as np",
+            "from PIL import Image",
+            "import cv2",
+            "tokenizer = AutoTokenizer.from_pretrained('gpt-4')",
+            "batch_size = 32",
+            "epochs = 10",
+            "lr = 1e-4",
+            "device = 'cuda' if torch.cuda.is_available() else 'cpu'"
+        ];
 
-        // 自定义鼠标特效
-        const cursor = document.querySelector('.custom-cursor');
-        const hoverElements = document.querySelectorAll('a, .btn, .feature-card');
-        
-        // 鼠标移动跟踪
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = `${e.clientX - cursor.offsetWidth / 2}px`;
-            cursor.style.top = `${e.clientY - cursor.offsetHeight / 2}px`;
-        });
-        
-        // 鼠标悬停效果
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.classList.add('hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.classList.remove('hover');
-            });
-        });
+        const floatingText = document.getElementById('floatingText');
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+        const lineCount = 50; // 复刻原站密度
 
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        // 生成浮动代码行
+        for (let i = 0; i < lineCount; i++) {
+            const line = document.createElement('div');
+            line.className = 'floating-line';
+            line.textContent = aiCodes[Math.floor(Math.random() * aiCodes.length)];
+            
+            // 随机位置和动画时长（复刻原站不规则浮动）
+            const x = Math.random() * screenWidth;
+            const duration = 20 + Math.random() * 30; // 20-50秒
+            const delay = Math.random() * 20; // 0-20秒延迟
+            
+            line.style.left = `${x}px`;
+            line.style.animationDuration = `${duration}s`;
+            line.style.animationDelay = `${delay}s`;
+            
+            floatingText.appendChild(line);
+        }
 
-        // 导航栏滚动效果
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.padding = '12px 40px';
-                nav.style.background = 'rgba(0, 0, 0, 0.9)';
-                nav.style.borderBottom = '1px solid rgba(0, 113, 227, 0.3)';
+        // 2. 打字机循环动画（仅动态显示王宇宙/UNIVERSE WANG，完全复刻原站逻辑）
+        const typewriter = document.getElementById('typewriter');
+        // 仅动态切换这两个文本
+        const textSequence = [
+            "王宇宙",
+            "UNIVERSE WANG"
+        ];
+        let sequenceIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 150; // 打字速度
+        let deletingSpeed = 80; // 删除速度
+
+        function typeWriterEffect() {
+            const currentText = textSequence[sequenceIndex];
+            
+            if (!isDeleting && charIndex < currentText.length) {
+                // 打字阶段 - 仅追加字符，不影响前缀
+                typewriter.textContent += currentText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriterEffect, typingSpeed);
+            } else if (isDeleting && charIndex > 0) {
+                // 删除阶段 - 仅删减字符，不影响前缀
+                typewriter.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(typeWriterEffect, deletingSpeed);
             } else {
-                nav.style.padding = '16px 40px';
-                nav.style.background = 'rgba(0, 0, 0, 0.8)';
-                nav.style.borderBottom = '1px solid rgba(0, 113, 227, 0.2)';
+                // 切换状态/序列
+                isDeleting = !isDeleting;
+                
+                if (!isDeleting) {
+                    // 切换到下一个文本，停顿后开始打字
+                    sequenceIndex = (sequenceIndex + 1) % textSequence.length;
+                    setTimeout(typeWriterEffect, 1000);
+                } else {
+                    // 开始删除前停顿
+                    setTimeout(typeWriterEffect, 1500);
+                }
             }
-        });
+        }
 
-        // 页面加载动画
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '1';
+        // 启动打字机
+        setTimeout(typeWriterEffect, 1000);
+
+        // 3. 窗口大小适配（复刻原站响应式）
+        window.addEventListener('resize', () => {
+            // 重新生成浮动文字位置
+            floatingText.innerHTML = '';
+            const newWidth = window.innerWidth;
+            for (let i = 0; i < lineCount; i++) {
+                const line = document.createElement('div');
+                line.className = 'floating-line';
+                line.textContent = aiCodes[Math.floor(Math.random() * aiCodes.length)];
+                const x = Math.random() * newWidth;
+                const duration = 20 + Math.random() * 30;
+                const delay = Math.random() * 20;
+                line.style.left = `${x}px`;
+                line.style.animationDuration = `${duration}s`;
+                line.style.animationDelay = `${delay}s`;
+                floatingText.appendChild(line);
+            }
         });
     </script>
 </body>
