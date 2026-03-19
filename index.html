@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNIVERSE | AI Developer</title>
+    <title>I am UNIVERSE</title> <!-- 核心修改：仅显示"我是宇宙"的英文 -->
     <style>
         /* 全局重置 & 原站核心样式复刻 */
         * {
@@ -127,22 +127,24 @@
             font-size: 16px;
         }
 
-        /* 核心内容区（复刻原站居中布局+定制打字机动效） */
+        /* 核心内容区（整体居中，解决打字机行消失问题） */
         .hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: center; /* 整体居中 */
             padding: 0 20px;
-            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center; /* 文本居中 */
         }
 
         .brand-wrapper {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
         }
 
         .brand-icon {
@@ -157,34 +159,41 @@
             color: #ff6700;
         }
 
-        /* 核心打字机文本（完全复刻原站：固定文本+局部动效） */
-        .typewriter-container {
+        /* 第一行固定文本 - 居中 */
+        .typewriter-line1 {
             font-size: clamp(2rem, 8vw, 5rem);
             font-weight: 900;
             line-height: 1.2;
-            margin-bottom: 24px;
-            position: relative; /* 关键：相对定位承载固定宽度 */
-            display: inline-block; /* 关键：保持行内块，不占满整行 */
-        }
-
-        /* 固定前缀 - 完全不动，和原站"也能玩转"一致 */
-        .typewriter-prefix {
+            margin-bottom: 16px;
             color: #000;
-            display: inline-block; /* 关键：块级化，宽度固定 */
-            width: auto; /* 仅占自身文字宽度 */
-            white-space: nowrap; /* 不换行 */
+            white-space: nowrap;
+            display: inline-block; /* 确保居中 */
         }
 
-        /* 动态区域 - 仅这个区域有打字机效果，宽度固定不影响前缀 */
-        .typewriter-text {
-            color: #ff6700; /* 原站橙色高亮，和品牌色一致 */
-            display: inline-block; /* 关键：独立块，不影响前缀 */
-            overflow: hidden; /* 隐藏溢出文字 */
-            border-right: 4px solid #ff6700; /* 光标颜色匹配品牌色 */
+        /* 第二行打字机效果 - 居中+固定行高（解决消失问题） + 王宇宙字符间距 */
+        .typewriter-line2 {
+            font-size: clamp(2rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 32px;
+            color: #ff6700;
+            overflow: hidden;
+            border-right: 4px solid #ff6700;
             animation: blink-caret 0.75s step-end infinite;
-            white-space: nowrap; /* 不换行 */
-            width: auto; /* 仅随内容变化，但不影响前缀位置 */
-            vertical-align: bottom; /* 对齐基线，防止跳动 */
+            white-space: nowrap;
+            display: inline-block; /* 固定行存在 */
+            min-height: 1.2em; /* 核心：删除完也保留行高，不消失 */
+            min-width: 20px; /* 保留光标位置，不塌陷 */
+        }
+
+        /* 王宇宙专属字符间距样式 */
+        .typewriter-line2.chinese-spacing {
+            letter-spacing: 0.5em; /* 可调整间隙大小 */
+        }
+
+        /* 恢复英文默认间距 */
+        .typewriter-line2.english-spacing {
+            letter-spacing: normal;
         }
 
         @keyframes blink-caret {
@@ -192,10 +201,20 @@
             50% { border-color: #ff6700; }
         }
 
+        /* 介绍文案精简 - 居中 */
         .subtitle {
             font-size: clamp(1rem, 3vw, 1.25rem);
             opacity: 0.7;
+            margin-bottom: 16px;
             max-width: 600px;
+        }
+
+        /* 标语样式 - 居中 */
+        .slogan {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: #ff6700;
+            font-weight: 700;
+            letter-spacing: 1px;
             margin-bottom: 48px;
         }
 
@@ -243,13 +262,20 @@
                 display: none;
             }
             .brand-wrapper {
-                margin-bottom: 16px;
+                margin-bottom: 24px;
             }
             .brand-icon {
                 font-size: 36px;
             }
             .brand-name {
                 font-size: 36px;
+            }
+            .typewriter-line1, .typewriter-line2 {
+                font-size: clamp(1.8rem, 7vw, 3.5rem);
+            }
+            /* 移动端调整中文字符间距 */
+            .typewriter-line2.chinese-spacing {
+                letter-spacing: 0.3em;
             }
             .btn-group {
                 display: flex;
@@ -258,11 +284,6 @@
             }
             .btn {
                 margin: 0;
-            }
-            /* 移动端依然保持前缀固定 */
-            .typewriter-container {
-                display: inline-block;
-                text-align: left;
             }
         }
     </style>
@@ -284,7 +305,7 @@
         </div>
         <div class="nav-right">
             <a href="#features">Features</a>
-            <a href="#预约">Pre-order</a>
+            <a href="#pre-order">Pre-order</a>
             <a href="#faq">FAQ</a>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-github"></i></a>
@@ -295,21 +316,19 @@
         </div>
     </nav>
 
-    <!-- 核心内容区（完全复刻原站：固定前缀+局部打字机） -->
+    <!-- 核心内容区（整体居中+打字机行不消失） -->
     <section class="hero">
         <div class="brand-wrapper">
             <span class="brand-icon">W</span>
             <span class="brand-name">UNIVERSE</span>
         </div>
-        <div class="typewriter-container">
-            <span class="typewriter-prefix">Welcome, I am </span>
-            <span class="typewriter-text" id="typewriter"></span>
-        </div>
+        <div class="typewriter-line1">Welcome, I am</div>
+        <div class="typewriter-line2" id="typewriter"></div>
         <p class="subtitle">
-            UNIVERSE is your personal AI development assistant, making complex AI engineering simple and intuitive.
+            UNIVERSE means the cosmos, the entire space and everything in it.
         </p>
+        <p class="slogan">NOBODY DOES THIS LIKE ME</p>
         <div class="btn-group">
-            <!-- 自定义跳转链接按钮，替换下载按钮 -->
             <a href="https://github.com" target="_blank" class="btn btn-primary">View My Projects</a>
             <a href="mailto:your@email.com" class="btn btn-secondary">Contact Me</a>
         </div>
@@ -364,9 +383,8 @@
             floatingText.appendChild(line);
         }
 
-        // 2. 打字机循环动画（仅动态显示王宇宙/UNIVERSE WANG，完全复刻原站逻辑）
+        // 2. 打字机循环动画（删除完保留行，不消失 + 王宇宙字符间距）
         const typewriter = document.getElementById('typewriter');
-        // 仅动态切换这两个文本
         const textSequence = [
             "王宇宙",
             "UNIVERSE WANG"
@@ -374,24 +392,33 @@
         let sequenceIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
-        let typingSpeed = 150; // 打字速度
-        let deletingSpeed = 80; // 删除速度
+        let typingSpeed = 150;
+        let deletingSpeed = 80;
 
         function typeWriterEffect() {
             const currentText = textSequence[sequenceIndex];
             
+            // 根据当前文本切换字符间距样式
+            if (currentText === "王宇宙") {
+                typewriter.classList.add('chinese-spacing');
+                typewriter.classList.remove('english-spacing');
+            } else {
+                typewriter.classList.add('english-spacing');
+                typewriter.classList.remove('chinese-spacing');
+            }
+
             if (!isDeleting && charIndex < currentText.length) {
-                // 打字阶段 - 仅追加字符，不影响前缀
+                // 打字阶段
                 typewriter.textContent += currentText.charAt(charIndex);
                 charIndex++;
                 setTimeout(typeWriterEffect, typingSpeed);
             } else if (isDeleting && charIndex > 0) {
-                // 删除阶段 - 仅删减字符，不影响前缀
+                // 删除阶段（删到0也保留行）
                 typewriter.textContent = currentText.substring(0, charIndex - 1);
                 charIndex--;
                 setTimeout(typeWriterEffect, deletingSpeed);
             } else {
-                // 切换状态/序列
+                // 切换状态，删完后不清空，保留行位置
                 isDeleting = !isDeleting;
                 
                 if (!isDeleting) {
@@ -410,7 +437,6 @@
 
         // 3. 窗口大小适配（复刻原站响应式）
         window.addEventListener('resize', () => {
-            // 重新生成浮动文字位置
             floatingText.innerHTML = '';
             const newWidth = window.innerWidth;
             for (let i = 0; i < lineCount; i++) {
